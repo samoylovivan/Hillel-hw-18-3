@@ -15,7 +15,6 @@ public class Main {
     private static void readZipFile(String zipFilePath) {
         try {
             ZipFile zipFile = new ZipFile(zipFilePath);
-
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
 
             while (entries.hasMoreElements()) {
