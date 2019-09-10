@@ -7,7 +7,6 @@ import java.util.zip.ZipFile;
 
 public class Main {
     public static final String PATH_TO_ZIP_LINUX = "/usr/lib/jvm/jdk-12.0.1/lib/src.zip";
-    public static final String PATH_TO_ZIP_WINDOWS = "C:\\Program Files\\Java\\jdk1.8.0_191\\src.zip";
 
     public static void main(String[] args) {
         readZipFile(PATH_TO_ZIP_LINUX);
