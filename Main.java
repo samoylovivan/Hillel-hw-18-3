@@ -6,13 +6,14 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 public class Main {
-    public static final String PATH_TO_ZIP_LINUX = "/usr/lib/jvm/jdk-12.0.1/lib/src.zip";
+    public static final String PATH_TO_ZIP_LINUX = "/snap/intellij-idea-community/172/lib/ant/src.zip";
 
     public static void main(String[] args) {
-        readZipFile(PATH_TO_ZIP_LINUX);
+        System.out.println(readCountZipFiles(PATH_TO_ZIP_LINUX));
     }
 
-    private static void readZipFile(String zipFilePath) {
+    private static long readCountZipFiles(String zipFilePath) {
+        long fileCounter = 0;
         try {
             ZipFile zipFile = new ZipFile(zipFilePath);
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
@@ -22,15 +23,14 @@ public class Main {
                 String name = entry.getName();
                 long compressedSize = entry.getCompressedSize();
                 long normalSize = entry.getSize();
-                String type = entry.isDirectory() ? "DIR" : "FILE";
-
-                System.out.println(name);
-                System.out.format("\t %s - %d - %d\n", type, compressedSize, normalSize);
+                if (!entry.isDirectory()){
+                    fileCounter++;
+                }
             }
-
             zipFile.close();
         } catch (IOException ex) {
 
         }
+        return fileCounter;
     }
 }
