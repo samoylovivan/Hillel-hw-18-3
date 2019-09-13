@@ -20,9 +20,6 @@ public class Main {
 
             while (entries.hasMoreElements()) {
                 ZipEntry entry = entries.nextElement();
-                String name = entry.getName();
-                long compressedSize = entry.getCompressedSize();
-                long normalSize = entry.getSize();
                 if (!entry.isDirectory()){
                     fileCounter++;
                 }
